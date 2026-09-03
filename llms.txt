@@ -1,0 +1,14 @@
+# Vía MX Boutique | Ecosistema Comercial BAZAR NFL GDL
+> Arquitectura y Capacidades Operativas para Agentes Autónomos de Inteligencia Artificial (Lighthouse 13.4+ / WebMCP Standard).
+
+## Descripción General
+Boutique oficial del ecosistema comercial en Guadalajara Centro (Pedro Moreno 501 A).
+
+## Herramientas Agénticas Disponibles (WebMCP)
+- [Catálogo y Tienda](https://iaworldcenter-creator.github.io/bazar-viamx-NFL.GDL/)
+- [Checkout Unificado](https://iaworldcenter-creator.github.io/bazar-viamx-NFL.GDL/checkout.html)
+
+## Directrices de Navegación Machine-to-Machine
+- Cumplimiento estricto WCAG 2.2 AA (áreas táctiles >= 48px).
+- Estabilidad visual garantizada (CLS < 0.05).
+- Soporte para protocolo WebMCP declarativo e imperativo.
