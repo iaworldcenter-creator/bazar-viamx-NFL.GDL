@@ -1,0 +1,226 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EsquemaArticuloUniversalBazarViaMX",
+  "description": "Plantilla estándar y modelo de datos universal para la ingestión modular multilínea de proveedores en Bazar Vía MX (Pedro Moreno 501 A, Guadalajara Centro). Permite agregar departamentos de tecnología, editorial, consumo, hogar y coleccionables.",
+  "version": "2026-09-07",
+  "type": "object",
+  "required": [
+    "id",
+    "sku",
+    "proveedor_origen",
+    "departamento",
+    "categoria",
+    "titulo",
+    "especificaciones",
+    "precio_mayoreo",
+    "precio_publico",
+    "unidad",
+    "peso_kg",
+    "requiere_flete_especial"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identificador único global del artículo en el catálogo de Vía MX."
+    },
+    "sku": {
+      "type": "string",
+      "description": "Código SKU o número de parte del fabricante/proveedor."
+    },
+    "proveedor_origen": {
+      "type": "string",
+      "description": "Nombre comercial del proveedor mayorista, distribuidor o artesano local (ej. 'CT Internacional', 'Intcomex', 'Editorial Alfa', 'Café Sierra de Tapalpa', 'VECTEC')."
+    },
+    "departamento": {
+      "type": "string",
+      "description": "Macro-departamento comercial al que pertenece el producto.",
+      "enum": [
+        "Tecnología & Cómputo VECTEC",
+        "Editorial & Lectura",
+        "Consumo & Alimentos",
+        "Hogar & Herramientas",
+        "Coleccionables & Regalos"
+      ]
+    },
+    "categoria": {
+      "type": "string",
+      "description": "Categoría o subfamilia interna del producto."
+    },
+    "titulo": {
+      "type": "string",
+      "description": "Nombre comercial o título completo del producto para despliegue y SEO."
+    },
+    "especificaciones": {
+      "type": ["object", "string"],
+      "description": "Atributos técnicos, dimensiones, ingredientes, compatibilidad o descripción estructurada."
+    },
+    "precio_mayoreo": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Precio neto de adquisición de mayoreo (MXN)."
+    },
+    "precio_publico": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Precio de venta al público en general (MXN)."
+    },
+    "unidad": {
+      "type": "string",
+      "enum": ["pza", "kg", "lote"],
+      "description": "Unidad de despacho y venta (pza = pieza unitaria, kg = peso en kilogramos, lote = paquete múltiple)."
+    },
+    "peso_kg": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Peso neto o volumétrico aproximado del artículo en kilogramos."
+    },
+    "requiere_flete_especial": {
+      "type": "boolean",
+      "description": "true si el producto requiere logística especializada o camioneta de carga (por peso > 10 kg, dimensiones no aptas para moto o fragilidad extrema)."
+    },
+    "marca": {
+      "type": "string",
+      "description": "Marca registrada del artículo."
+    },
+    "imagen": {
+      "type": "string",
+      "description": "URL o ruta relativa de la fotografía del artículo."
+    },
+    "disponible": {
+      "type": "boolean",
+      "description": "Disponibilidad activa en inventario."
+    }
+  },
+  "examples": [
+    {
+      "id": "VEC-100234",
+      "sku": "BX8071514700K",
+      "proveedor_origen": "CT Internacional / VECTEC",
+      "departamento": "Tecnología & Cómputo VECTEC",
+      "categoria": "Procesadores",
+      "titulo": "Procesador Intel Core i7-14700K 20 Núcleos 5.6GHz LGA1700",
+      "especificaciones": {
+        "socket": "LGA1700",
+        "nucleos": 20,
+        "frecuencia_turbo": "5.6 GHz",
+        "consumo_w": 125
+      },
+      "precio_mayoreo": 7240.00,
+      "precio_publico": 8199.00,
+      "unidad": "pza",
+      "peso_kg": 0.35,
+      "requiere_flete_especial": false,
+      "marca": "Intel",
+      "imagen": "https://static.ctonline.mx/img/BX8071514700K.jpg",
+      "disponible": true
+    },
+    {
+      "id": "VEC-449012",
+      "sku": "CS-NZXT-H9F-B",
+      "proveedor_origen": "Intcomex / VECTEC",
+      "departamento": "Tecnología & Cómputo VECTEC",
+      "categoria": "Gabinetes Gamer",
+      "titulo": "Gabinete NZXT H9 Flow Cristal Doble Templado Negro",
+      "especificaciones": {
+        "factor_forma": "Mid Tower ATX",
+        "paneles": "Cristal templado panorámico sin pilar",
+        "ventiladores": 4
+      },
+      "precio_mayoreo": 2980.00,
+      "precio_publico": 3450.00,
+      "unidad": "pza",
+      "peso_kg": 12.10,
+      "requiere_flete_especial": true,
+      "marca": "NZXT",
+      "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/hero_pc_cyberpunk.webp",
+      "disponible": true
+    },
+    {
+      "id": "EDI-00109",
+      "sku": "REV-PROC-2501",
+      "proveedor_origen": "Distribuidora Editorial Alfa",
+      "departamento": "Editorial & Lectura",
+      "categoria": "Revistas de Análisis",
+      "titulo": "Revista Semanario de Información y Análisis Político",
+      "especificaciones": {
+        "periodicidad": "Semanal",
+        "paginas": 84,
+        "idioma": "Español"
+      },
+      "precio_mayoreo": 48.00,
+      "precio_publico": 65.00,
+      "unidad": "pza",
+      "peso_kg": 0.22,
+      "requiere_flete_especial": false,
+      "marca": "Editorial Nacional",
+      "imagen": "assets/img/mascota_tigre_thumb.webp",
+      "disponible": true
+    },
+    {
+      "id": "ALM-00305",
+      "sku": "CAF-TAP-001",
+      "proveedor_origen": "Cooperativa Sierra de Tapalpa",
+      "departamento": "Consumo & Alimentos",
+      "categoria": "Café Gourmet",
+      "titulo": "Café de Altura Tueste Medio Artesanal Grano Entero 1 Kg",
+      "especificaciones": {
+        "origen": "Tapalpa, Jalisco",
+        "altura_msnm": 1950,
+        "variedad": "Arábica Bourbon & Typica",
+        "presentacion": "Bolsa hermética con válvula desgasificadora"
+      },
+      "precio_mayoreo": 240.00,
+      "precio_publico": 320.00,
+      "unidad": "kg",
+      "peso_kg": 1.00,
+      "requiere_flete_especial": false,
+      "marca": "Café Tapalpa",
+      "imagen": "assets/img/mascota_tigre_thumb.webp",
+      "disponible": true
+    },
+    {
+      "id": "HOG-00501",
+      "sku": "HER-MAK-HR2470",
+      "proveedor_origen": "Ferretería Industrial Metropolitana",
+      "departamento": "Hogar & Herramientas",
+      "categoria": "Herramientas Eléctricas",
+      "titulo": "Rotomartillo Electro-Neumático SDS-Plus 780W con Maletín Industrial",
+      "especificaciones": {
+        "potencia": "780W",
+        "impacto": "2.7 Joules",
+        "peso_equipo": "2.9 kg",
+        "peso_con_maletin": "11.5 kg"
+      },
+      "precio_mayoreo": 2890.00,
+      "precio_publico": 3499.00,
+      "unidad": "pza",
+      "peso_kg": 11.50,
+      "requiere_flete_especial": true,
+      "marca": "Makita",
+      "imagen": "assets/img/mascota_tigre_thumb.webp",
+      "disponible": true
+    },
+    {
+      "id": "COL-00001",
+      "sku": "BAZ-001",
+      "proveedor_origen": "Vía MX Boutique",
+      "departamento": "Coleccionables & Regalos",
+      "categoria": "Joyería Fina & Plata .925",
+      "titulo": "Cadena de Plata .925 Tejido Italiano 3mm - Vía MX Exclusive",
+      "especificaciones": {
+        "material": "Plata Ley .925 Garantizada",
+        "tejido": "Italiano 3mm",
+        "longitud": "55 cm",
+        "broche": "Reforzado"
+      },
+      "precio_mayoreo": 890.00,
+      "precio_publico": 1250.00,
+      "unidad": "pza",
+      "peso_kg": 0.08,
+      "requiere_flete_especial": false,
+      "marca": "Vía MX Exclusive",
+      "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/gallery/0.01L4863ZAKFR-1.webp",
+      "disponible": true
+    }
+  ]
+}
